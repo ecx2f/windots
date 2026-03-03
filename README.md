@@ -19,6 +19,16 @@ Welcome to my dotfiles repository! This repository contains my personalized conf
 - **Efficient Workflow:** Tools and configurations aimed at boosting productivity.  
 - **Consistency Across Environments:** Easy to replicate setup for any user.  
 
+## ✅ Compatibility
+
+| Component | Tested on | Notes |
+|---|---|---|
+| Windows | Windows 11 23H2 / 24H2 | Some Windhawk mods may vary between builds |
+| PowerShell | 7.x | Required for helper scripts in `scripts/` |
+| Yasb | latest | Requires Nerd Font for icons |
+| Windhawk | latest | Import JSON in each mod's Advanced section |
+| Fastfetch | latest | If logo path fails, use `%USERPROFILE%\\.config\\fastfetch\\windows.txt` |
+
 ---
 
 ## 🛠️ Configurations  
@@ -61,11 +71,26 @@ Run these from the repo root in PowerShell:
 # Validate tracked configs
 ./scripts/validate.ps1
 
+# One-command bootstrap (copies core configs)
+./scripts/setup.ps1
+
 # Apply old context menu and restart Explorer
 ./scripts/apply-context-menu.ps1 -Mode old -RestartExplorer
 
 # Restore default Windows 11 context menu
 ./scripts/apply-context-menu.ps1 -Mode win11 -RestartExplorer
+```
+
+### Quick bootstrap
+
+Use this for a fast first-time setup after installing the required apps:
+
+```powershell
+# Run validation + copy configs to your profile
+./scripts/setup.ps1
+
+# Optional: also apply old context menu and restart Explorer
+./scripts/setup.ps1 -ContextMenu old -RestartExplorer
 ```
 
 ## 1️⃣ Install PowerShell 7 & Windows Terminal
@@ -163,6 +188,14 @@ Install [Windhawk](https://windhawk.net/)
     ```bash
     https://raw.githubusercontent.com/refact0r/midnight-discord/refs/heads/master/flavors/midnight-catppuccin-mocha.theme.css
     ```
+
+## 🧰 Troubleshooting
+
+- **YASB weather widget shows no data:** add your key/location in `configs/yasb/config.yaml` and verify internet access.
+- **Icons look wrong or squares appear:** install a Nerd Font (JetBrainsMono NF recommended) and restart affected apps.
+- **Context menu style did not change:** run `./scripts/apply-context-menu.ps1 -Mode old -RestartExplorer` or sign out and back in.
+- **Fastfetch logo path error:** update `configs/fastfetch/config.jsonc` logo source to your local path.
+- **PowerShell profile issues:** restore from `Microsoft.PowerShell_profile.ps1.bak-*` backup created by `scripts/setup.ps1`.
 
 
 ## 🎉 Credits</h2>
