@@ -53,6 +53,21 @@ Welcome to my dotfiles repository! This repository contains my personalized conf
 > **⚠️ Warning:** Review the files before applying them, especially on different systems.  
 > If you have any questions, feel free to ask on my [Reddit post](https://www.reddit.com/r/desktops/comments/1jfz8rv/simple_windows_11_catppuccin_mocha_rice/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button).  
 
+### Quick helper scripts
+
+Run these from the repo root in PowerShell:
+
+```powershell
+# Validate tracked configs
+./scripts/validate.ps1
+
+# Apply old context menu and restart Explorer
+./scripts/apply-context-menu.ps1 -Mode old -RestartExplorer
+
+# Restore default Windows 11 context menu
+./scripts/apply-context-menu.ps1 -Mode win11 -RestartExplorer
+```
+
 ## 1️⃣ Install PowerShell 7 & Windows Terminal
 Both tools are essential for this setup. Install them via the Microsoft Store:
 - [PowerShell 7](https://apps.microsoft.com/detail/9mz1snwt0n5d?hl=es-es&gl=ES)
@@ -69,9 +84,10 @@ PowerToys enhances the system, and **PowerToys Run** is a key feature:
 - Replace the default configuration with my [config](configs/yasb/):
   ```plaintext
   %USERPROFILE%\.config\yasb\config.yaml
-  %USERPROFILE%\.config\yasb\styles.css
-  ```
+   %USERPROFILE%\.config\yasb\styles.css
+   ```
 Tip: *Press the Windows key + R and paste the path to go faster*.
+- Open `config.yaml` and set your own weather API key and location (details in [configs/yasb/README.md](configs/yasb/README.md)).
 ## 4️⃣ Install Cute Borders
 Adds custom-colored borders to windows:
 
@@ -89,6 +105,11 @@ Install [Windhawk](https://windhawk.net/)
   - Taskbar Styler
   - Taskbar Tray Icon Spacing
 - Configure each mod under the "Advanced" tab using my settings from [windhawk configs](configs/windhawk/)
+
+## 5.5️⃣ Optional: Windows Context Menu Style
+- Use [restore-old-context-menu.reg](configs/windows-context-menu/restore-old-context-menu.reg) to switch to the old context menu style.
+- Use [restore-win11-context-menu.reg](configs/windows-context-menu/restore-win11-context-menu.reg) to restore the default Windows 11 style.
+- You can apply either file directly or use `./scripts/apply-context-menu.ps1`.
 
 
 ## 6️⃣ Customize PowerShell with Oh My Posh
