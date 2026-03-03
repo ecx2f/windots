@@ -3,7 +3,8 @@ Clear-Host
 fastfetch
 
 function dev() {
-    Set-Location -Path "D:\dev";
+    $devRoot = if ($env:DEV_HOME) { $env:DEV_HOME } else { Join-Path $HOME "dev" }
+    Set-Location -Path $devRoot
 }
 
 

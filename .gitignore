@@ -1,0 +1,18 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Local overrides
+*.local
+*.local.*
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Windows and editor metadata
+Thumbs.db
+Desktop.ini
+.vscode/
